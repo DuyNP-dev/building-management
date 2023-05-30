@@ -1,25 +1,22 @@
--- nghĩa roles
 use building_management;
 
 INSERT INTO roles (`id`, `name`)
 VALUES ('1', 'ROLE_ADMIN')
 , ('2', 'ROLE_EMPLOYEE');
 
--- nghĩa app user
 INSERT INTO app_users (`id`, `deleted`, `is_enabled`, `password`, `username`, `verification_code`)
 VALUES ('1', 0, 1, '$2a$12$.Mfx0vhTiWRZL723RZD4.uROZM6QVKpYJ4ZM.JSuc54IJVMz7rJAi', 'admin', null)
 , ('2', 0, 1, '$2a$12$.Mfx0vhTiWRZL723RZD4.uROZM6QVKpYJ4ZM.JSuc54IJVMz7rJAi', 'hung', null);
 
- -- nghĩa app user role
  INSERT INTO app_users_roles (`app_users_id`, `roles_id`) 
  VALUES ('1', '1')
   , ('2', '2');
   
-  INSERT INTO `employee` (`employee_id`, `employee_address`, `employee_code`, `employee_date_of_birth`, `employee_delete_flag`, `employee_email`, `employee_gender`, `employee_image`, `employee_name`, `employee_phone`, `employee_start_date`,`employee_position_id`)
+INSERT INTO `employee` (`employee_id`, `employee_address`, `employee_code`, `employee_date_of_birth`, `employee_delete_flag`, `employee_email`, `employee_gender`, `employee_image`, `employee_name`, `employee_phone`, `employee_start_date`,`employee_position_id`)
  VALUES (1, 'dn', '12455555', '1992-10-10', 0, 'hjj@gmail.com',null, null, 'nghia',null, null,1);
  INSERT INTO `employee` (`employee_id`, `employee_address`, `employee_code`, `employee_date_of_birth`, `employee_delete_flag`, `employee_email`, `employee_gender`, `employee_image`, `employee_name`, `employee_phone`, `employee_start_date`, `employee_position_id`)
  VALUES (2, 'dn', '12455555', '1992-10-10', 0, 'hjj@gmail.com',null, null, 'hung',null, null,1);
--- vy
+
 INSERT INTO customer (`customer_id`, `customer_address`, `customer_code`, `customer_date_of_birth`, `customer_delete_flag`, `customer_email`, `customer_identify_number`, `customer_name`, `customer_phone`, `customer_status`) 
 VALUES 
 (1, '12 Lê Quý Kỳ, Đà Nẵng', 'KH-0001', '01-01-1994', b'0', 'hoadeptrai@gmail.com', '3434343434', 'Nguyễn Đình Hòa', '0905123456', 'Đang Thuê')
@@ -38,11 +35,11 @@ VALUES
 , (14, '100 Hoàng Diệu', 'KH-0028', '01-09-1991', b'0', 'datnguyen@gmail.com', '1991566777', 'Nguyễn Đạt', '0706234891', 'Đã Thuê')
 , (15, '15 Đống Đa', 'KH-0029', '01-08-1995', b'0', 'tieuphuonguyen@gmail.com', '1995213131', 'Tiêu Phương Uyên', '0905121899', 'Đã Thuê')
 , (16, '5 Trần Cao Vân', 'KH-0005', '01-03-1997', b'0', 'trangnguyen@gmail.com', '1997986655', 'Nguyễn Trang', '0901987766', 'Đang Thuê');
--- Lanh position
+
 INSERT INTO employee_position (`employee_position_id`, `employee_position_name`)
 VALUES ('1', 'Quản Lý'),
 ('2', 'Nhân Viên');
--- Lanh employee
+
 INSERT INTO employee (`employee_id`, `employee_address`, `employee_code`, `employee_date_of_birth`, `employee_delete_flag`, `employee_email`, `employee_gender`, `employee_image`, `employee_name`, `employee_phone`, `employee_start_date`, `app_user_id`, `employee_position_id`) 
 VALUES 
 -- ('1', 'Đà Năng', 'NV-0001', '16-10-1992', b'0', 'hieu@gmail.com', 'Nam', 'abc', 'Nguyễn Văn Hiếu', '0339234567','23-06-2022', '2', '1')
@@ -61,7 +58,6 @@ VALUES
 ,('14', 'Huế', 'NV-0014', '11-10-2000', b'0', 'thao@gmail.com', 'Nữ', 'abc', 'Phan Thị Mai Thảo ', '0999996666','18-06-2022', '2', '1')
 ,('15', 'Đà Năng', 'NV-0020', '18-12-2005', b'0', 'nga@gmail.com', 'Nữ', 'abc', 'Phan Thị Thanh Nga ', '09766665506','18-06-2022', '2', '1');
 
-  -- Of Duy
 INSERT INTO floors_status (`floor_status_id`, `floor_status_name`)
 VALUES ('1', 'Chưa bàn giao')
 , ('2', 'Đang vào ở')
@@ -81,18 +77,17 @@ VALUES ('1', 'MTL001', 'Tầng 1', '100', 0, '10', '1', '1')
 , ('4', 'MTL004', 'Tầng 4', '400', 0, '40', '1', '4')
 , ('5', 'MTL005', 'Tầng 5', '500', 0, '50', '2', '5');
 
--- phien pascaes_status
 INSERT INTO spaces_status (`space_status_id`, `spacer_status_name`) VALUES
 (1, 'Chưa vào ở'),
 (2, 'Đã vào ở'),
 (3, 'Chưa bàn giao'),
 (4, 'Đang sửa chữa');
--- phien pascaes_type
+
 INSERT INTO spaces_type (`space_type_id`, `space_type_name`) VALUES
 (1, 'Mặt đứng'),
 (2, 'Mặt tiền'),
 (3, 'Mặt cắt');
--- phien pascaes
+
 INSERT INTO spaces (`space_area`, `space_code`, `space_delete_flag`, `space_image`, `space_manager_fee`, `space_note`, `space_price`, `floor_id`, `space_status_id`, `space_type_id`) VALUES
 ('50', 'MB-001', 1, 'https://firebasestorage.googleapis.com/v0/b/building-manager-6262e.appspot.com/o/5b0b905d673[…]?alt=media&token=024a8daa-b510-428a-b10b-0e9758b2b290', 1000000, 'Đã cho thuê', 3000000, 1, 1, 1),
 ('60', 'MB-002', 1, 'https://firebasestorage.googleapis.com/v0/b/building-manager-6262e.appspot.com/o/5b0b905d673[…]?alt=media&token=024a8daa-b510-428a-b10b-0e9758b2b290', 2000000, 'chưa thuê', 4000000, 1, 2, 2),
@@ -103,7 +98,6 @@ INSERT INTO spaces (`space_area`, `space_code`, `space_delete_flag`, `space_imag
 ('50', 'MB-006', 1, 'https://firebasestorage.googleapis.com/v0/b/building-manager-6262e.appspot.com/o/5b0b905d673[…]?alt=media&token=024a8daa-b510-428a-b10b-0e9758b2b290', 1000000, 'không có', 5000000, 4, 2, 2),
 ('80', 'MB-007', 1, 'https://firebasestorage.googleapis.com/v0/b/building-manager-6262e.appspot.com/o/5b0b905d673[…]?alt=media&token=024a8daa-b510-428a-b10b-0e9758b2b290', 1000000, 'không có', 6000000, 4, 2, 1);
 
--- Dong contract
 INSERT INTO contract (`contract_id`, `check_flag`, `contract_code`, `contract_content`, `contract_date_end`, `contract_date_start`, `contract_delete_flag`, `contract_deposit`, `contract_expired`, `contract_image_url`, `contract_tax_code`, `contract_total`, `price`, `customer_id`, `employee_id`, `space_id`) 
 VALUES ('1', '0', 'HD-0001', 'cccc', '2022-10-09', '2020-09-09', b'0', '1211', '24', 'ccccc', '1111', '12000', '1000', '1', '1', '1')
 , ('2', '0', 'HD-0002', 'cccc', '2022-05-09', '2022-03-09', b'0', '1211', '2', 'ccccc', '1111', '12000', '1000', '2', '2', '2')
